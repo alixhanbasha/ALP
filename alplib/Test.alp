@@ -1,0 +1,34 @@
+shkruajr( "\bDuke printuar kete fajll\d" );
+shkruajr( "\g" + FLEXO("/home/kage/Self/Thesis/1COMPILER_J/alplib/Test.alp") + "\d" );
+
+shkruajr( "Testimi i funksioneve native ne ALP" );
+
+klasa Test {
+    __init__( var ){
+        ky.var = var;
+    }
+    info(){
+        shkruajr( "Test -> info():\n\t" + String(ky.var) );
+    }
+}
+
+deklaro t = Test( "var" );
+
+shkruajr( instanca_e( t, "objekt" ) );
+shkruajr( instanca_e( t.info, "funksion" ) );
+shkruajr( instanca_e( t.var, "tekst" ) );
+shkruajr( instanca_e( t.var, "numer" ) );
+
+funksioni main( diqka ){
+    nese( !instanca_e( diqka, "objekt" ) ){
+        shkruajr( "Duhet qe variabla te jet objekt!" );
+        kthen;
+    }
+    diqka.info();
+}
+
+shkruajr("");
+main( "hello" );
+
+shkruajr("");
+main( t );

@@ -1,0 +1,70 @@
+/*
+    shkruajr("test");   ALP Testimi i shpejtesise se egzekutimit
+*/
+
+deklaro COUNT = 0;
+
+shkruajr( "Fib() -> definimi" );
+funksion Fib( n ){
+    COUNT = COUNT + 1;
+    nese( n <= 1 ){ 
+        kthen n; 
+    }
+    kthen Fib(n-2) + Fib(n-1);
+}
+
+shkruajr( "fsh() -> definimi" );
+
+// shkruajr file-in e lexuar ne ekran
+funksion fsh( path ){
+    shkruajr( FLEXO(path) );
+}
+
+shkruajr( "Diamanti() -> definimi" );
+funksioni Diamanti(){
+    deklaro LIMIT = 15; // Integjer( Input("Sheno limitin e diamantit: ") );
+    per( deklaro i=1; i<=LIMIT ; i=i+1 ){
+        per( deklaro j=LIMIT; j>i; j=j-1 ){
+            shkruaj( " " );
+        }
+        per( deklaro k=1; k<(i*2)-1 ; k=k+1 ){
+            shkruaj( "*" );
+        }
+        shkruajr("");
+    }
+
+    per( deklaro i=LIMIT-1; i>=1 ; i=i-1 ){
+        per( deklaro j=LIMIT-1; j>=i; j=j-1 ){
+            shkruaj( " " );
+        }
+        per( deklaro k=1; k<(i*2)-1 ; k=k+1 ){
+            shkruaj( "*" );
+        }
+        shkruajr("");
+    }
+}
+
+// ---------------------------------------------------------------------- //
+
+shkruajr( "\n\nFib() -> egzekutimi" );
+per( deklaro i=1; i<=20 ; i=i+1 ){
+    shkruajr( Fib(i) );
+}
+
+shkruajr( "\n\nfsh() -> egzekutimi" );
+fsh( "/home/kage/alp.lang" );
+
+shkruajr( "\n\nDiamanti() -> egzekutimi" );
+Diamanti();
+
+shkruajr("\n\nFor loop testi deri 10000000");
+per( deklaro i=0; i<1000000; i=i+1 ){}
+
+shkruajr( "For loop perfundoi" );
+
+COUNT = 0;
+shkruajr("\nDuke kalkuluar shpejtesine e rekurzionit me numrat fibinachi deri 30");
+Fib( 30 );
+shkruajr("Fib(30) thiri veteveten " + String(COUNT) + " here!\n");
+
+

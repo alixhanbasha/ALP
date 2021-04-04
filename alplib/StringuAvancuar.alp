@@ -1,0 +1,12 @@
+klasa StringuAvancuar {
+
+    __init__( str ){ ky.stringu = String(str); }
+    vlera(){ kthen String( ky.stringu ); }
+    gjatesia(){ kthen __Gjatesia__( ky.stringu ); }
+    
+    shkronja( n ){
+        n = Integjer(n);
+        kthen __ShkronjaNe__( n , ky.stringu );
+    }
+
+}   

@@ -1,0 +1,102 @@
+klasa _IO_ {
+    
+    Error( mesazhi ){ shkruajr( "\r" + mesazhi + "\d" ); }
+    Sukses( mesazhi ){ shkruajr( "\g" + mesazhi + "\d" ); }
+    Info( mesazhi ){ shkruajr( "\b" + mesazhi + "\d" ); }
+    FatalError( m , c ){ shkruajr("\r"+m+"\d"); Dil(c); }
+    
+    InputStatik( str, tipi ){
+		nese( tipi == "int" ){ kthen Integjer(Input( str )); }
+		tjeter( tipi == "dhjetor" ){ kthen Dhjetor(Input( str )); }
+		tjeter( tipi == "string" ose tipi == "tekst" ose tipi == "text" ){ kthen String(Input( str )); }
+		perndryshe{	kthen String(Input( str )); }
+	}
+    
+    FLexo( path ){ 
+        path = String( path );
+        nese ( path == "" ){
+            Sistemi().Error( "Duhet te ceket vendi i fajllit per lexim" );
+            kthehu;
+        }
+        kthen FLEXO( path ); 
+    }
+
+    FShkruaj( path ){ 
+        path = String( path );
+        nese ( path == "" ){
+            ky.Error( "Duhet te ceket vendi i fajllit per lexim" );
+            kthehu;
+        }
+        kthen FSHKRUAJ( path ); 
+    }
+
+    tipi(){ kthen String( ky ); }
+
+}
+deklaro io = _IO_();
+
+klasa Matematike {
+    neFuqi( x,y ){
+         deklaro r = Integjer(1);
+         deklaro i = Integjer(0);
+         perderisa( i<y ){
+              r = r * x;
+              i = i + 1;
+         }
+         kthen Integjer(r);
+    }
+
+    Min( x,y ){
+        nese( x<y ){ kthen x; }
+        kthen y;
+    }
+
+    Max( x,y ){
+        nese( x>y ){ kthen x; }
+        kthen y;
+    }
+
+}
+
+klasa Test {
+    LOOP( LIMIT ){
+        per( deklaro i=0; i < Integjer(LIMIT) ; i=i+1 ){
+            per( deklaro j=0; j<LIMIT ; j=j+1 ){
+                nese( i==j ose i<=j ){
+                    shkruaj( "*" );
+                }perndryshe{
+                    shkruaj(" ");
+                }
+            }
+            shkruajr("");
+        }
+
+    }
+
+    // @TEST
+    fib( n ){
+             nese( n <= 1 ){ kthen n; }
+             kthen fib(n-2) + fib(n-1);
+    }
+
+     TEST(){
+             shkruajr( "mbrenda TEST\nDuke definuar TEST2" );
+             deklaro G1 = "G1";
+             deklaro G2 = "G2";
+
+             funksion TEST2(){
+                shkruajr( G1 + " " + G2 );
+                shkruajr( "funksioni TEST2 over" );
+             }
+
+             kthen TEST2 ;
+    }
+
+    time(){
+        deklaro start = Dhjetor( Clock() );
+        deklaro c = 0;
+        per( deklaro i=0; i<2000000; i=i+1 ){ c = c+10; }
+        deklaro fund = Dhjetor( Clock() );
+        shkruajr( "Testi perfundoi per " + (fund-start) + "s" );
+    }
+}
