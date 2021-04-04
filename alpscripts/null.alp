@@ -1,0 +1,9 @@
+shkruajr( "\n \n \nLogjika me ZBRAZET" );
+
+deklaro null;
+
+shkruajr( "\ndeklaro null; // do te jete automatikisht ZBRAZET" );
+shkruajr( "null == ZBRAZET: " + ( null == ZBRAZET ) );
+shkruajr( "null == \"string\": " + ( null == "string" ) );
+shkruajr( "null == null: " + (null == null) );
+

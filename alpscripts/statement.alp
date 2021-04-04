@@ -1,0 +1,62 @@
+/*
+	Testimi i ALPlang
+*/
+
+//importo "<Standard>";
+
+shkruaj ("
+Pershendetje Bote
+Teksti po punon si duhet
+");
+
+deklaro emri = "Alixhan";
+deklaro mosha = 21;
+
+shkruajr( "
+Emri --> " + emri + "
+Mosha --> " + mosha
+);
+
+shkruajr( "
+" + emri + " Basha " );
+
+shkruaj( "
+    Aritmetika
+    150 + 150 = " + (150+150) 
+);
+deklaro krahasimi = (1==1);
+shkruaj( "    1 == 1 --> " + krahasimi );
+
+krahasimi = (1!=1);
+shkruaj( "          1 != 1 --> " + krahasimi ); // Komente single line boi
+
+
+shkruaj("
+	+-------------------- Tabela -------------------+
+	|    EMRI        |    MBIEMRI    |    MOSHA     |
+	|===============================================|
+	|   "+emri+"      |    Basha      |    "+mosha+"        |
+	|===============================================|
+	|    Gjeni       |    Basha      |    19        |
+	+-----------------------------------------------+
+");
+
+/*
+klasa Personi {
+	funksioni init( emri , mbiemri ){
+		aktual.emri = emri;
+		aktual.mbiemri = mbiemri;
+	}
+}
+
+klasa Nxenesi trashegon Personi {
+	funksioni init( emri , mbiemri , klasa ){
+		super( emri , mbiemri );
+		ky.klasa = klasa;
+	}
+	funksioni neText(){ kthen aktual.emri + ", " + aktual.mbiemri + ", " + aktual.klasa ; }
+}
+
+var une = Nxenesi( "Alixhan" , "Basha" , 21 );
+shkruajr( une.neText() );
+*/

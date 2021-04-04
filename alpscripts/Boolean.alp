@@ -1,0 +1,30 @@
+/*
+Testimi i "true" dhe "false"
+ne gjuhen ALP
+*/
+
+deklaro e_vertet = "Alixhan" == "Alixhan" ; // test
+deklaro e_rreme  = "Alixhan" != "Alixhan" ; // kthen "fals"
+
+shkruajr("
+deklaro e_vertet = 'Alixhan' == 'Alixhan'; // \"true\" apo vertet
+deklaro e_rreme  = 'Alixhan' != 'Alixhan'; // \"false\" apo fals
+");
+
+shkruajr( "e_evertet == vertet |> " + (e_vertet == vertet)) ;
+shkruajr( "e_evertet != vertet |> " + (e_vertet != vertet)) ;
+
+shkruajr("");
+
+shkruajr( "e_evertet == fals |> " + (e_vertet == fals)) ;
+shkruajr( "e_evertet != fals |> " + (e_vertet != fals)) ;
+
+shkruajr("");
+
+shkruajr( "e_rreme == vertet |> " + (e_rreme == vertet)) ;
+shkruajr( "e_rreme != vertet |> " + (e_rreme != vertet)) ;
+
+shkruajr("");
+
+shkruajr( "e_rreme == fals |> " + (e_rreme == fals)) ;
+shkruajr( "e_rreme != fals |> " + (e_rreme != fals)) ; 

@@ -1,0 +1,22 @@
+importo "<Standard>";
+
+funksion Fibinaqi( n ){
+    nese( n<=1 ){ kthen n; }
+    kthen Fibinaqi(n-2) + Fibinaqi(n-1);
+}
+
+funksion Kryesor( p1 , p2 ){
+    shkruajr( p1 + " + " + p2 + " = " + (p1+p2) );
+    shkruajr( p1 + " - " + p2 + " = " + (p1-p2) );
+    shkruajr( p1 + " * " + p2 + " = " + (p1*p2) );
+    shkruajr( p1 + " / " + p2 + " = " + (p1/p2) );
+    shkruajr( p1 + " % " + p2 + " = " + Modulo(p1,p2) );
+
+    deklaro des = Input( "Vazhdo me fibinachi? " );
+    nese( (des == "po") ose (des=="PO") ) {
+        deklaro n = Integjer( Input( "Ma jep nje numer startues: " ) );
+        shkruajr(Fibinaqi(n));
+    }
+}
+
+Kryesor( 150 , 42 );

@@ -1,0 +1,39 @@
+/*
+ Konceptet e avancuara ne ALP
+ autori => hashbang404 (Alixhan Basha)
+*/
+
+funksion main() {
+    deklaro PUNO = vertet, komanda = "", PROMPTI = "$> " ;
+
+    perderisa( PUNO ){
+        komanda = Input( PROMPTI );
+        nese( komanda=="test" ){ shkruajr("\rKUQ\gGJELBERT\bKALTER\d"); }
+        tjeter( komanda=="import" ){ 
+            deklaro MODULI = String( Input( "Sheno emrin e modulit per importim: " ) );
+            importo("<" + MODULI + ">");
+            shkruajr( "Gati me importim te " + MODULI );
+        }
+        tjeter( komanda=="stop" ose komanda=="q" ){ PUNO=fals; }
+        tjeter( komanda=="eval" ){ shkruajr("evali test"); }
+
+        perndryshe { shkruajr("ERROR: ["+komanda+"] nuk eshte nje komande"); }
+    }
+}
+
+main();
+
+/*
+funksion t(arg) {
+    arg = Integjer( arg );
+    nese(arg==1){
+        shkruajr("ok");
+    }
+    tjeter(arg==2) {
+        shkruajr(arg);
+    }
+    perndryshe {
+        shkruajr("no");
+    }
+}
+*/

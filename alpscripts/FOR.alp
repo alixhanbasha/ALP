@@ -1,0 +1,14 @@
+funksion FOR_TEST( limit ){
+
+    per( deklaro i=1; i<=limit; i=i+1 ){
+        shkruajr( i );
+        per( deklaro j=1 ; j<=Integjer((limit/2)) ; j=j+1 ){
+            shkruajr( "\t" + j );
+        }
+        nese( i==4 ){ shkruaj( "\r" ); }
+        perndryshe{ shkruaj("\d"); }
+    }
+
+}
+
+FOR_TEST(10);

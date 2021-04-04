@@ -1,0 +1,17 @@
+importo("<Standard>");
+importo("<StringuAvancuar>");
+
+funksioni main(){
+    deklaro file = String( Input("Vendi i fajllit: ") ); // kthen string
+    file = FileIO().Lexo( file ); // kthen string
+    file = StringuAvancuar( file ); // file u kthye ne objekt
+    
+    shkruajr( "Gjatesia e fajllit: " + file.gjatesia() );
+
+    deklaro opt = Input( "Trego vleren? " );
+    nese( opt == "po" ){
+        shkruaj( "\n\n" + file.vlera() );
+    }
+}
+
+main();

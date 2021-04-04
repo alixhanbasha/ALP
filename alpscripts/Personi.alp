@@ -1,0 +1,58 @@
+/*
+    klasa Personi per te testuar OOP me ALP
+*/
+// importo "/home/kage/Self/Thesis/1COMPILER_J/alpscripts/Personi.alp";
+klasa Personi 
+{
+
+    __init__( emri, mbiemri, mosha )
+    {
+        ky.emri = emri;
+        ky.mbiemri = mbiemri;
+        kjo.mosha = mosha;
+    }
+
+    Informacionet()
+    {
+        shkruajr( "Emri: " + ky.emri );
+        shkruajr( "Mbiemriemri: " + ky.mbiemri );
+        shkruajr( "Mosha: " + kjo.mosha );
+    }
+    
+    Callback( func, args ){
+    	nese( instanca_e( func, "funksion" ) ){
+    		shkruajr( "Thirret: " + String(func) + " nga Studenti.Callback" );
+    		func( args );
+    		shkruajr( "Perfundoi" );
+    	}perndryshe{
+    		shkruajr( "Argumenti i pasuar nuk eshte funksion !" );
+    	}
+    }
+    
+}
+
+klasa Studenti trashegon Personi 
+{
+    
+    __init__( emri, mbiemri, mosha, viti_studimeve )
+    {
+        super.__init__( emri, mbiemri, mosha );
+        ky.viti_studimeve = viti_studimeve;
+    }
+
+    Informacionet()
+    {
+        super.Informacionet();
+        shkruajr( "Viti i Studimeve: " + ky.viti_studimeve );
+    }
+
+}
+
+//deklaro ab = Studenti( "Alixhan" , "Basha" , 21 , 3 );
+//ab.Informacionet(); shkruajr("");
+
+//deklaro gb = Studenti( "Gjeni" , "Basha" , 19 , 2 );
+//gb.Informacionet(); shkruajr("");
+
+//deklaro es = Studenti( "Emir" , "Shehu" , 19 , 1 );
+//es.Informacionet(); 

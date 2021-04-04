@@ -1,0 +1,130 @@
+/*
+    This is an alp script to
+    test how importing and other stuff is going !
+*/
+
+importo "<Standard>";
+shkruajr("\r\nKUQ\n\bKALTERT\n\gGJELBERT\n\d");
+
+nese( STD_SistemiOperativ == "linux" ){
+    shkruajr "Duke perdorur sistemin operativ LINUX";
+    //deklaro test = "mbrenda \"nese\""; // Momentalish deklarimet jane ne GLOBAL .( TODO ) -> Mundesoje qe me qen 'local scope'
+    //shkruajr test;
+} perndryshe {
+    shkruajr "\bSistemi oprtativ nuk eshte LINUX\d";
+}
+//shkruajr test;
+
+deklaro kompjuteri = "Lenovo Thinkpad T530" , madhesia = "15";
+
+shkruajr("Sistemi operativ: " + STD_SistemiOperativ + "\nPC Modeli: " + kompjuteri + "\nMadhesia: " + madhesia + " inch\n\n");
+
+deklaro n1=150, n2=10.5;
+deklaro res = n1 + n2;
+
+shkruajr( n1 + " + " + n2 + " = " + res );
+
+res = n1 - n2;
+shkruajr( n1 + " - " + n2 + " = " + res );
+
+
+shkruajr( "
++--------------------------------------+
+|    TestTabela     |     TestTabela   |
++--------------------------------------+
+|       Key 1       |       Val 1      |
++--------------------------------------+
+|       Key 2       |       Val 2      |
++--------------------------------------+
+" );
+
+deklaro emri = "Alixhan", mosha = 21;
+
+shkruajr( "
+\tEmri --> " + emri + "
+\tMosha --> " + mosha
+);
+
+shkruajr( "\n \t" + emri + " Basha " );
+
+shkruajr( "
+\tAritmetika
+\t150 + 150 = " + (150+150) + "\n"
+);
+
+deklaro krahasimi = (1==1);
+shkruajr( "\t1 == 1 --> " + krahasimi );
+
+krahasimi = (1!=1);
+shkruaj( "\t1 != 1 --> " + krahasimi ); // Komente single line
+
+shkruajr("\n \n 
+\t+-------------------- Tabela -------------------+
+\t|    EMRI        |    MBIEMRI    |    MOSHA     |
+\t|-----------------------------------------------|
+\t|   "+emri+"      |    Basha      |    "+mosha+"        |
+\t|-----------------------------------------------|
+\t|    Gjeni       |    Basha      |    19        |
+\t+-----------------------------------------------+
+");
+
+
+deklaro stringu1 = "Alixhan" ;
+deklaro stringu2 = "Basha" ;
+
+shkruajr( "\nDuke testuar stringjet -> " + stringu1 + " dhe " + stringu2 + "" ) ;
+shkruajr( ( stringu1 + " == " + stringu2 + " ==> " ) + (stringu1 == stringu2) ) ;
+shkruajr( ( stringu1 + " != " + stringu2 + " ==> " ) + (stringu1 != stringu2) ) ;
+
+deklaro numri1 = 10, numri2 = 25 ;
+
+shkruajr( "\nDuke testuar numrat -> " + numri1 + " dhe " + numri2 + "" ) ;
+shkruajr( numri1 + " == " + numri2 + " ==> " + (numri1==numri2) ) ;
+shkruajr( numri1 + " != " + numri2 + " ==> " + (numri1!=numri2) ) ; 
+
+shkruajr( "\n \n \nDuke importuar <Boolean.alp>...\n" );
+
+importo "<Boolean>";
+importo "<Boolean>";
+importo "<Boolean>";
+
+//importo "<null>";
+
+
+//deklaro emri = Standard.Input( "Sheno emrin: " );
+
+deklaro rezultati=g1+g2 , g1=5 , g2=1;
+shkruajr( "\ng1:" + g1 + "\tg2: " + g2 + "\nRes: " + rezultati + "\n\n" );
+
+// -----------------------------------------------------------------------
+
+shkruajr("\n\n\n");
+nese( ((stringu1 != stringu2) dhe (1!=1)) ose (1==1) ){ 
+	shkruaj "kushti u plotsu njeri";
+	shkruaj stringu1 ;
+    //importo "<statement>";
+} perndryshe {
+	shkruajr "kushti ra njeri";
+}
+
+shkruajr "\nTestimi i \"perderisa\":\n";
+deklaro I = 0;
+perderisa( I<10 ){
+    nese( I==5 ){
+        shkruaj "\b";
+//        importo "<hello>";
+        shkruaj "\d";
+    }
+    shkruajr I;
+    I=I+1;
+}
+
+deklaro forloop;
+per (deklaro it=1 ; it<11 ; it=it+1){ 
+    nese(it==5){ 
+        forloop = "\gIterator: "+it+"\d"; 
+    } perndryshe { 
+        forloop = "Iterator: "+it ; 
+    }
+    shkruajr forloop;
+}

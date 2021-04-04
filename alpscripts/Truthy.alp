@@ -1,0 +1,25 @@
+// ALP Programi per te testuar 
+// vertetshemrine e variablave
+// Shkrutimisht Krahasimi i dy tipeve te njejta, nese jane te njejta apo te ndryshme
+
+/* Vetem nje test i 
+komenteve disa
+rreshteshe
+*/
+
+deklaro stringu1 = "Alixhan" ;
+deklaro stringu2 = "Basha" ;
+
+shkruajr( "\nDuke testuar stringjet -> " + stringu1 + " dhe " + stringu2    ) ;
+shkruajr( ( stringu1 + " == " + stringu2 + " ==> " ) + (stringu1==stringu2) ) ;
+shkruajr( ( stringu1 + " != " + stringu2 + " ==> " ) + (stringu1!=stringu2) ) ;
+
+
+
+deklaro numri1 = 10 ;
+deklaro numri2 = 25 ;
+
+shkruajr( "\nDuke testuar numrat -> " + numri1 + " dhe " + numri2);
+shkruajr( numri1 + " == " + numri2 + " ==> " + (numri1==numri2) ) ;
+shkruajr( numri1 + " != " + numri2 + " ==> " + (numri1!=numri2) ) ;
+

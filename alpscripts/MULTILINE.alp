@@ -1,0 +1,44 @@
+/**/
+/* Single line test */
+/* Double line test
+of multiline comment*/
+
+deklaro emri = "Alixhan"  ;
+deklaro mbiemri = "Basha" ;
+
+/* 
+
+testing synbols :#$: 
+
+*/
+
+shkruajr( "
+Hello MULTILINE Scirpt" );
+
+shkruajr( "Pershendetje " + emri + " " + mbiemri );
+/*
+importo "<Standard>";
+
+klasa Tst {
+    funksioni __init__( param1 ){
+        ky.param1 = param1;
+    }
+}
+
+klasa Test {
+    funskioni __init__(){
+        super( "TEST" );
+    }
+
+    funksioni TEST(){
+        shkruajr("Nje test i multiline komentit !");
+    }
+
+    funksioni TEST2( emri , mosha ){
+        deklaro m = mosha;
+        deklaro e = emri ;
+
+        shkruaj e + " " + m + " " + ( 1==1 ) + "\n";
+    }
+}
+*/

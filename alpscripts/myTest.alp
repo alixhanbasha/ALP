@@ -1,0 +1,15 @@
+
+
+// ALP --> ALbanian Programming
+/* These are just tests for the lang */
+
+deklaro emri    = "Alixhan";
+deklaro mbiemri = "Basha";
+deklaro mosha   = 21;
+
+deklaro Personi = "
+Emri    -> " + emri + "
+Mbiemri -> " + mbiemri + "
+Mosha   -> " + mosha ;
+
+shkruaj Personi;

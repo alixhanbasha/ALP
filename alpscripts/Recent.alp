@@ -1,0 +1,30 @@
+funksion test( num ){
+    num = Integjer(num);
+    nese( num==1 ){ kthehu; }
+    perndryshe{ num=num-1; test(num); }
+}
+
+shkruajr( "test" );
+deklaro i = 100;
+i = Integjer(i);
+
+nese( i==100 ){
+    shkruajr("ok");
+}
+
+deklaro null = ZBRAZET;
+nese( null == ZBRAZET ){
+    shkruajr( "null == NULL" );
+}
+
+
+i = NULL;
+per( deklaro i=0; i<10 ; i=i+1 ){
+    deklaro cmd = String( Input("$> ") );
+    nese( cmd == "test" ){ shkruajr( cmd ); }
+    tjeter( cmd == "hello" ){ shkruajr( cmd ); }
+    tjeter( (cmd == "q") ose (cmd == "stop") ){ i = 10; }
+    perndryshe { shkruajr("not a cmd"); }
+}
+
+//test( 3 );

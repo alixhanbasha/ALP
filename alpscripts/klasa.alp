@@ -1,0 +1,11 @@
+/*
+    Testues i klasave ne ALP
+*/
+
+klasa Sistemi {
+    Sukses( mesazhi ){ shkruaj( "\g" + mesazhi + "\d" ); }
+    Error( mesazhi ){ shkruaj ( "\r" + mesazhi + "\d" ); }
+}
+
+Sistemi().Sukses( "Nje mesazhi i suksesit nga klasa Sistemi\n" );
+Sistemi().Error ( "Nje mesazhi i errorit  nga klasa Sistemi\n" );

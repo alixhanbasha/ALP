@@ -1,0 +1,6 @@
+// Testimi i stringut multiline ne ALP
+
+shkruaj("Ky eshte nje string \" multiline \"
+qe mund te shkruhet ne
+kete forme, dhe e ruan \gformen\d e vete!
+");
