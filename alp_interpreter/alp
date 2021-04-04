@@ -1,0 +1,147 @@
+#!/bin/bash
+
+# ALPlang launch script
+# @alixhanbasha (hasbang404)
+
+clear
+
+PROG_ARRAY=()
+HAS_ERROR=0
+COMPILE=0
+COMPILE_NATIVE=0
+NATIVE=0
+MY_JAVA_VERSION="14"
+TESTING=0
+
+ParseArgs(){
+	while [[ $# -gt 0 ]];do
+		case $1 in
+            "--j11") MY_JAVA_VERSION="11" ;;
+            "--compile-to-native") 
+                if [[ "$MY_JAVA_VERSION" == "11" ]];then COMPILE_NATIVE=1;
+                else echo "To compile to native, specify --j11 option!" ; exit 1
+                fi
+            ;;
+            "-n"|"--native") NATIVE=1 ;;
+            "--run-test") TESTING=1 ;;
+			"-c"|"--compile") COMPILE=1 ; break ;;
+			"-h"|"--help") PROG_ARRAY+=("$1") ;;
+            # ----------------------------------------------------------- #
+			"-d"|"--debug") PROG_ARRAY+=("$1") ;;
+			"--commander")  PROG_ARRAY+=("$1") ;;
+			"-v"|"--verbose") PROG_ARRAY+=("$1") ;;
+			"-V"|"--version") PROG_ARRAY+=("$1") ;;
+			"-r"|"--repl") PROG_ARRAY+=("$1") ;;
+			
+			"-f"|"--file") 
+				PROG_ARRAY+=("$1")
+				shift
+				PROG_ARRAY+=("$1")
+			;;
+			
+			*)
+				printf "\033[0;31m'$1' nuk eshte nje opsion !\n\033[0m" 
+				HAS_ERROR=1
+				break 
+			;;
+		esac
+		shift
+	done
+	
+	if [[ HAS_ERROR -eq 1 ]];then
+		PrintHelp
+		exit 1
+	fi
+}
+
+PrintHelp(){
+cat <<EOF
+
+    ALP -> ALbanianProgramming (language)
+    
+    Opsionet per ndihme:
+       +--------------------------------------------------------------------------------------------------------------------------------+
+       |  "--j11"               | Do te perdoret Java/JDK 11                                                                            |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "--compile-to-native" | Do te kompajllohet ne program nativ per sistemin operativ                                             |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "-n" ose "--native"   | Egzekuto native binary te ALPlang                                                                     |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "--run-test"          | Testo shpejtesine e egzekutimit                                                                       |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "-d" ose "--debug"    | ALPlang do te egzekutohet ne DEBUG_MODE                                                               |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "-v" ose "--verbose"  | Programi do te permbaj me shume informacione. DO te jete me verbose                                   |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "-V" ose "--version"  | Shkruaj versionin e programit ne konsoll                                                              |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "-h" ose "--help"     | Shkruaj kete ndihme                                                                                   |
+       |--------------------------------------------------------------------------------------------------------------------------------|
+       |  "--commander"         | Punon vetem nese opsioni "--repl" eshte specifikuar. Mundeson disa funksione per analizimin e memorjes|    
+       +--------------------------------------------------------------------------------------------------------------------------------+
+
+   Opsionet per egzekutim:
+       +-------------------------------------------------------------------------------------------------------------------------------+
+       | "-r" ose "--repl"     | (Read,Execute,Print,Loop) Shell interaktiv per ALP                                                    |
+       |-------------------------------------------------------------------------------------------------------------------------------|
+       | "-f" ose "--file"     | Egzekuto skriptin e specifikuar                                                                       |
+       +-------------------------------------------------------------------------------------------------------------------------------+
+
+    Shembull:
+        $ alp -r
+        $ alp -f "Skripta.alp"
+        $ alp -v -r # shelli interaktiv me verbozitet
+
+EOF
+}
+
+ALPlang(){
+    unset _JAVA_OPTIONS
+    figlet ": ALPlang :"
+    printf "\tAlixhan Basha\t"
+    if [[ "$MY_JAVA_VERSION" == "14" ]];then
+	    cd ./src
+        [[ "$TESTING" == 1 ]] && echo "Testing JDK14 ALPlang" && time java ALPlang --file "<ALP_SPEED_TEST>" && return $?
+        [[ "$COMPILE" == 1 ]] && printf "Compiling ALPlang to JDK14...\n\n" && javac *.java || printf "ALPlang JDK14\n\n" && java ALPlang $@
+
+    elif [[ "$MY_JAVA_VERSION" == "11" ]]; then
+        cd ./src11
+        
+        [[ "$COMPILE_NATIVE" == 1 ]] && printf "Compiling native biary...\n\n" && ~/GraalVM/bin/native-image ALPlang && return $?
+        
+        if [[ "$NATIVE" == 1 ]];then 
+            if [[ "$TESTING" == 1 ]];then
+               printf "Testing Native Binary\n\n"
+               time ./alplang -f "<ALP_SPEED_TEST>"
+               return $?           
+            else
+                printf "ALPlang Native Binary\n\n"
+                ./alplang $@ 
+                return $?               
+            fi
+        fi
+
+        if [[ "$TESTING" == 1 ]];then
+            printf "Testing JDK11 ALPlang\n\n";
+            time ~/GraalVM/bin/java ALPlang --file "<ALP_SPEED_TEST>"
+            return $?
+        fi
+
+        [[ "$COMPILE" == 1 ]] && printf "Compiling ALPlang to JDK11...\n\n" && ~/GraalVM/bin/javac *.java || { 
+            printf "ALPlang JDK11\n\n"
+            ~/GraalVM/bin/java ALPlang $@
+            return $?
+        }
+    fi
+}
+
+
+# Driver Code
+if [[ "$#" -gt 0 ]];then 
+	ParseArgs "$@"
+	ALPlang "${PROG_ARRAY[@]}"
+else
+	PrintHelp
+	exit 1
+fi
+

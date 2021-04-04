@@ -1,0 +1,114 @@
+#!/bin/python3
+import sys
+'''
+* Python script that automates creating a java file
+* This creates the AST code for jALPlang
+'''
+lastEdited = "( Sat Sep 19 2020 )"
+
+types = {
+    # For Expression Class !
+    'Assign'   : [ 'Token name ' , 'Expression value' ],
+    'Binary'   : [ 'Expression left' , 'Token operator' , 'Expression right' ],
+    'Unary'    : [ 'Token operator' , 'Expression right' ],
+    'Logical'  : [ 'Expression left' , 'Token operator' , 'Expression right' ],
+    'Literal'  : [ 'Object value' ],
+    'Call'     : [ 'Expression callee' , 'Token paren' , 'List<Expression> arguments' ],
+    'Get'      : [ 'Expression obj' , 'Token name' ],
+    'Set'      : [ 'Expression obj' , 'Token name' , 'Expression value' ],
+    'Super'    : [ 'Token keyword' , 'Token method' ],
+    'This'     : [ 'Token keyword' ],
+    'Grouping' : [ 'Expression expr' ] ,
+    'Variable' : [ 'Token name' ]
+}
+
+stmtTypes = {
+    'StmtExpression' : [ 'Expression expr' ],
+    'Block'          : [ 'List<Statement> statements' ],
+    'Class'          : [ 'Token name' , 'Expression.Variable superclass' , 'List<Statement.Function> methods' ],
+    'Function'       : [ 'Token name' , 'List<Token> params' , 'List<Statement> body' ],
+    'If'             : [ 'Expression condition' , 'List<Statement> thenBranch' , 'List<Object> elif' , 'List<Statement> elseBranch' ],
+    'Return'         : [ 'Token keyword' , 'Expression value' ],
+    'Print'          : [ 'Expression expr' , "boolean println" ],
+    #'FileRead'      : [ 'Expression expr' ],
+    'Import'         : [ 'Expression expr' ],
+    'Var'            : [ 'Token name' , 'Expression initializer' ],
+    'While'          : [ 'Expression condition' , 'List<Statement> body' ],
+    'For'            : [ 'Statement initializer' , 'Expression condition' , 'Expression increment' , 'List<Statement> body' ]
+}
+
+autogenInfo = '''/*
+* This file is auto generated ASTgen script , dont mess with it.
+* created ( Mon Aug 10 2020 )
+* last edited ''' + lastEdited + '''
+* author Alixhan Basha
+*/
+'''
+
+def getParams( params ):
+    res = ""
+    for i in range(0,len(params)-1):
+        res += params[i] + ", "
+    res += params[-1]
+    return res
+
+def createFunction( classname , parameters , file , basename ):
+    file.write( "    public static class " + classname + " extends " + basename + " {\n" )
+    file.write( "        public " + classname + " ( " + getParams( parameters ) + " ) {\n" )
+
+    for i in parameters:
+        parts = i.split()
+        file.write( f"            this.{parts[1]} = {parts[1]};\n" )
+
+    file.write( "        }\n" )
+    for i in parameters:
+        file.write( f"        public final {i};\n" )
+    file.write( "\n        @Override\n" )
+    file.write( "        public <R> R accept( Visitor<R> visitor ){\n" )
+    file.write( "            return visitor.visit" + classname + basename + "(this);\n        }\n" )
+    file.write( "    }\n" )
+    file.write("\n\n")
+
+def defineVisitor( file , basename , types=dict() ):
+    file.write( "    public interface Visitor<R> {\n" )
+    for i in types.items():
+        file.write( "        public R visit" + i[0]+basename + "(" + i[0] + " " + basename.lower() + ");\n" )
+    file.write( "    }\n\n" )
+
+def AST( directory , basename , types=dict() ):
+    path = directory + '/' + basename + '.java'
+    file = open( path , 'w' )
+    print( f"\033[0;32mGenerating \033[0;33m{directory}{basename}.java\033[0m" )
+
+    file.write( autogenInfo )
+    file.write( 'import java.util.List;\n' )
+    file.write( "" );
+    file.write( "public abstract class " + basename + "{\n" );
+
+    defineVisitor( file , basename , types )
+    file.write( "    public abstract <R> R accept( Visitor<R> visitor );\n\n" )
+
+    for i in types.items():
+        classname = i[0]
+        parameters = i[1]
+        createFunction( classname , parameters , file , basename )
+
+    file.write( "}\n" )
+    file.close()
+    print("Finnished")
+
+
+if __name__ == "__main__":
+    if( len(sys.argv) >= 3 ):
+        print(": : : ASTgen tool : : :")
+        if sys.argv[3] == '0':
+            AST( sys.argv[1] , sys.argv[2] , types )
+        elif sys.argv[3] == '1':
+            print( "MOS HARO ME RREGULLU STATEMENT" )
+            des = input( "KUR E PREK ENTER, KA ME OVERRIDE Statement.java. Sigurohu qe e ki ni backup te fajllit te tashtem !" );
+            AST( sys.argv[1] , sys.argv[2] , stmtTypes )
+        else:
+            AST( sys.argv[1] , sys.argv[2] , types )
+    else:
+        print("\nUsage: ASTgen <path/to/dir> <filename>\nGenerates a java file containig ALPlang expression logic!")
+
