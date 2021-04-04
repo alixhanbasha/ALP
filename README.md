@@ -1,5 +1,4 @@
-# ALP
-## Albanian Programming Language
+# ALP - Albanian Programming Language
 ### Gjuha e pare programuese ne gjuhen **Shqipe**.
 
 ALP eshte nje gjuhe programuese e interpretuar, dinamike dhe e orientuar ne objekte, qellimi i te cilit eshte edukimi i fillestareve ne programim. Sintaksa, thjeshtesia dhe forca e ALP jane aftesite primare. Programimin do ta mesoni ne gjuhen ametare, pa ditur gjuhen Angleze.</br>
