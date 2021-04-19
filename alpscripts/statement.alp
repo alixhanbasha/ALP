@@ -2,7 +2,7 @@
 	Testimi i ALPlang
 */
 
-//importo "<Standard>";
+//importo "<Stdlib>";
 
 shkruaj ("
 Pershendetje Bote
@@ -24,6 +24,7 @@ shkruaj( "
     Aritmetika
     150 + 150 = " + (150+150) 
 );
+
 deklaro krahasimi = (1==1);
 shkruaj( "    1 == 1 --> " + krahasimi );
 
@@ -37,26 +38,26 @@ shkruaj("
 	|===============================================|
 	|   "+emri+"      |    Basha      |    "+mosha+"        |
 	|===============================================|
-	|    Gjeni       |    Basha      |    19        |
+	|    Filan       |    Fisteku    |    19        |
 	+-----------------------------------------------+
 ");
 
 /*
 klasa Personi {
-	funksioni init( emri , mbiemri ){
+	__init__( emri , mbiemri ){
 		aktual.emri = emri;
 		aktual.mbiemri = mbiemri;
 	}
 }
 
 klasa Nxenesi trashegon Personi {
-	funksioni init( emri , mbiemri , klasa ){
-		super( emri , mbiemri );
+	__init__( emri , mbiemri , klasa ){
+		super__init__( emri , mbiemri );
 		ky.klasa = klasa;
 	}
-	funksioni neText(){ kthen aktual.emri + ", " + aktual.mbiemri + ", " + aktual.klasa ; }
+	neText(){ kthen aktual.emri + ", " + aktual.mbiemri + ", " + aktual.klasa ; }
 }
 
-var une = Nxenesi( "Alixhan" , "Basha" , 21 );
+deklaro une = Nxenesi( "Alixhan" , "Basha" , 21 );
 shkruajr( une.neText() );
 */
