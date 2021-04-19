@@ -16,14 +16,14 @@ TESTING=0
 ParseArgs(){
 	while [[ $# -gt 0 ]];do
 		case $1 in
-            "--j11") MY_JAVA_VERSION="11" ;;
-            "--compile-to-native") 
-                if [[ "$MY_JAVA_VERSION" == "11" ]];then COMPILE_NATIVE=1;
-                else echo "To compile to native, specify --j11 option!" ; exit 1
-                fi
-            ;;
-            "-n"|"--native") NATIVE=1 ;;
-            "--run-test") TESTING=1 ;;
+            		# "--j11") MY_JAVA_VERSION="11" ;;
+            		# "--compile-to-native") 
+                	#	if [[ "$MY_JAVA_VERSION" == "11" ]];then COMPILE_NATIVE=1;
+                	#	else echo "To compile to native, specify --j11 option!" ; exit 1
+                	#	fi
+            		# ;;
+            		# "-n"|"--native") NATIVE=1 ;;
+            		"--run-test") TESTING=1 ;;
 			"-c"|"--compile") COMPILE=1 ; break ;;
 			"-h"|"--help") PROG_ARRAY+=("$1") ;;
             # ----------------------------------------------------------- #
@@ -92,9 +92,9 @@ ALPlang(){
     figlet ": ALPlang :"
     printf "\tAlixhan Basha\t"
     if [[ "$MY_JAVA_VERSION" == "14" ]];then
-	    cd ./src
-        [[ "$TESTING" == 1 ]] && echo "Testing JDK14 ALPlang" && time java ALPlang --file "<ALP_SPEED_TEST>" && return $?
-        [[ "$COMPILE" == 1 ]] && printf "Compiling ALPlang to JDK14...\n\n" && javac *.java || printf "ALPlang JDK14\n\n" && java ALPlang $@
+		cd ./src
+        	[[ "$TESTING" == 1 ]] && echo "Testing JDK14 ALPlang" && time java ALPlang --file "<ALP_SPEED_TEST>" && return $?
+        	[[ "$COMPILE" == 1 ]] && printf "Compiling ALPlang to JDK14...\n\n" && javac *.java || printf "ALPlang JDK14\n\n" && java ALPlang $@
 
     elif [[ "$MY_JAVA_VERSION" == "11" ]]; then
         cd ./src11
