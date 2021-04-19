@@ -20,6 +20,9 @@ Pas kompajllimit te ALP ( qe mund te zgjas deri 60 sekonda ), egzekutoni shell s
 dhe ALP do te egzekutohet.</br>
 
 ## alp Skripta dhe opsionet e saj
+ALP eshte nje program qe eshte ne gjendje jo vetem te egzekutoje komandat, por edhe menyra e egzekutimit te programit eshte dinamike dhe mvaret nga parametrat e dhena nga perdoruesi. Keto parametra kontrollojne mbrendesine e interpretuesit te ALP dhe kombinimet e ndryshme japin rezultate te ndryshme. Ashtu pershembull nese deshirojme te egzekutojme nje ALP skripte atehere mund ta perdorim komanden `alp --file file.alp` ose `alp -f file.alp`. </br>
+
+Nese deshirojme te shohim rezultatin e komandave drejte-per-drejte ne terminal, atehere mund ta perdorim komanden `alp -r` ose `alp --repl`. Kombinuar me opsionet `--commander --debug --verbose` jemi ne gjendje te shikojme se si egzekutohet nje komande ne prapavije dhe qfare efekti ka ne gjendjen globale te interpretuesit. Opsioni `--commander` ka komanda te caktuara qe na tregojne reprezentimin te memorjes, modulet e importuara etj. `--debug` ose `-d` tregon se si tokenizohen komandat e ALP. `--verbose` ose `-v` printon me shume mesazhe nga interpretuesi.
 
 ## ALP Gjuha Programuese dhe koceptet e programimit
 
