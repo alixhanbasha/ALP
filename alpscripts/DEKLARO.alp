@@ -1,4 +1,9 @@
 // testim i deklraimeve te variablave
-deklaro t=1 , g=2;
-shkruajr t;
-shkruajr g;
+deklaro t=1 , g=2; // shkakton bugs-a nese perdoret mbrenda funksioneve/klasave apo blloqeve tjera
+
+// preferohet te perdoret forma e poshtme
+deklaro autori = "alixhanbasha";
+deklaro mosha = 22;
+
+shkruajr t || autori;
+shkruajr g || mosha ;
