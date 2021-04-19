@@ -3,21 +3,20 @@
     autori => Alixhan Basha
 */
 
-// TODO -> Duhet qe te suportohet me shume se nje komande mbrenda 'nese' blloqeve !
-
 shkruajr "Testimi i \"nese\" dhe \"perndryshe\" ne ALP";
-deklaro emri = "Alixhan Basha";
+deklaro autori = "alixhanbasha";
 
-nese( 2==2 ) {
-    shkruaj("\n 1=1 \n");
-    shkruajr( "Alixhan Basha\n\rTesting multiple things\d" );
-    nese( emri == "Alixhan" ){
-        shkruajr "Emri Alixhan";
-    }perndryshe{
-        shkruajr "nese i dyt [X]";
-    }
-}perndryshe{
-    shkruajr "nese i par [X] ";
+nese( autori == "alixhanbasha" ) { // if
+    shkruajr( "ALP eshte nje gjuhe e interpretuar, dinamike," );
+    Dil( 0 );
 }
 
+tjeter ( autori == "AlixhanBasha" ){ // else if
+    shkruajr( "Kjo do te egzekutohet nese kushti i siperm nuk plotesohet" );
+    Dil( 1 );
+}
 
+perndryshe { // else
+    shkruajr( "Egzekutohet nese kushtet e siperme nuk plotesohen !" );
+    Dil( 2 );
+}
