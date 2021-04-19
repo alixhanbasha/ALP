@@ -2,7 +2,11 @@
 import sys
 '''
 * Python script that automates creating a java file
-* This creates the AST code for jALPlang
+* This creates the AST code for jALPlang, or rather
+* it generates two different classes ( depending on the args given )
+* wich are Expression.java and Statement.java
+* 
+* github.com/alixhanbasha
 '''
 lastEdited = "( Sat Sep 19 2020 )"
 
