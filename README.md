@@ -22,3 +22,5 @@ dhe ALP do te egzekutohet.</br>
 ## alp Skripta dhe opsionet e saj
 
 ## ALP Gjuha Programuese dhe koceptet e programimit
+
+Derisa te shkruhet dokumentacioni i detajuar per ALP dhe aftesite e kesaj gjuhe, mund te shikoni skriptat ne follderin alpscript.
