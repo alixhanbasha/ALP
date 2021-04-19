@@ -20,21 +20,21 @@ shkruajr( "Pershendetje " + emri + " " + mbiemri );
 importo "<Standard>";
 
 klasa Tst {
-    funksioni __init__( param1 ){
+    __init__( param1 ){
         ky.param1 = param1;
     }
 }
 
 klasa Test {
-    funskioni __init__(){
+    __init__(){
         super( "TEST" );
     }
 
-    funksioni TEST(){
+    TEST(){
         shkruajr("Nje test i multiline komentit !");
     }
 
-    funksioni TEST2( emri , mosha ){
+    TEST2( emri , mosha ){
         deklaro m = mosha;
         deklaro e = emri ;
 
